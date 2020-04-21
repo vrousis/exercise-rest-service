@@ -1,0 +1,19 @@
+server:
+  port: 19350
+
+app:
+  server:
+    context-shutdown:
+      await-period: 10
+    graceful-shutdown:
+      back-off-policy:
+        retry-interval: 1
+        multiplier: 2
+        max-retry-interval: 30
+      retry_policy:
+        max_attempts: 6
+
+cassandra:
+  contactpoints: 172.17.0.2
+  port: 9042
+  keyspace: item_engine
